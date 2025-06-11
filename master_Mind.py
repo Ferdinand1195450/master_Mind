@@ -16,9 +16,10 @@ ALLOWED_COLORS = ["red", "blue", "green", "yellow", "purple", "orange"]
 def generate_Code(length=4):
     return [random.choice(ALLOWED_COLORS) for _ in range(length)]
 
+
 def get_Feedback(secret, guess):
     black_pegs = sum(s == g for s, g in zip(secret, guess))
-    
+
     secret_counts = {}
     guess_counts = {}
 
@@ -27,19 +28,24 @@ def get_Feedback(secret, guess):
             secret_counts[s] = secret_counts.get(s, 0) + 1
             guess_counts[g] = guess_counts.get(g, 0) + 1
 
-    white_pegs = sum(min(secret_counts.get(color, 0), guess_counts.get(color, 0)) for color in guess_counts)
-    
+    white_pegs = sum(min(secret_counts.get(color, 0), 
+    guess_counts.get(color, 0)) for color in guess_counts)
+
     return black_pegs, white_pegs
+
 
 def show_Secret(code):
     print("Secret code:", ' '.join(code))
+
 
 def play_Mastermind():
     print("Welcome to Mastermind!")
     print("Guess the 4-color code. Use color **names** or **numbers 1–6**.")
     print("Choices:")
-    for num, color in sorted((k, v) for k, v in COLOR_MAP.items() if k.isdigit()):
+    for num, color in sorted((k, v) for k,
+     v in COLOR_MAP.items() if k.isdigit()):
         print(f"  {num}: {color}")
+
 
     secret_code = generate_Code()
     attempts = 10
@@ -76,7 +82,8 @@ def play_Mastermind():
         print(f"White pegs (correct color, wrong position): {white}")
 
         if black == 4:
-            print(f"\nCongratulations! You guessed the code: {' '.join(secret_code)}")
+            print(f"\nCongratulations! You guessed the code: 
+            {' '.join(secret_code)}")
             return
 
     print(f"\nGame Over! The correct code was: {' '.join(secret_code)}")
@@ -86,3 +93,4 @@ if __name__ == "__main__":
     while again == "Y":
         play_Mastermind()
         again = input("\nPlay again? (Y/N): ").strip().upper()
+
