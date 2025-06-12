@@ -82,8 +82,8 @@ def play_Mastermind():
         print(f"White pegs (correct color, wrong position): {white}")
 
         if black == 4:
-            print(f"\nCongratulations! You guessed the code: 
-            {' '.join(secret_code)}")
+            print(f"\nCongratulations! You guessed the code:"
+            f"{' '.join(secret_code)}")
             return
 
     print(f"\nGame Over! The correct code was: {' '.join(secret_code)}")
