@@ -45,7 +45,9 @@ def play_Mastermind():
     print("Welcome to Mastermind!")
     print("Guess the 4-color code. Use color **names** or **numbers 1–6**.")
     print("Choices:")
-    for num, color in sorted((k, v) for k, v in COLOR_MAP.items() if k.isdigit()):
+    for num, color in sorted(
+        (k, v) for k, v in COLOR_MAP.items() if k.isdigit()
+    ):
         print(f"  {num}: {color}")
 
     secret_code = generate_Code()
@@ -80,10 +82,15 @@ def play_Mastermind():
 
         black, white = get_Feedback(secret_code, guess)
         print(f"Black pegs (correct color & position): {black}")
-        print(f"White pegs (correct color, wrong position): {white}")
+        print(
+            f"White pegs (correct color, wrong position): {white}"
+        )
 
         if black == 4:
-            print(f"\nCongratulations! You guessed the code: {' '.join(secret_code)}")
+            print(
+                f"\nCongratulations! You guessed the code: "
+                f"{' '.join(secret_code)}"
+            )
             return
 
     print(f"\nGame Over! The correct code was: {' '.join(secret_code)}")
